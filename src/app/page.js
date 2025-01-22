@@ -1,12 +1,87 @@
 // import Navbar from "@/components/Navbar";
 // import Image from "next/image";
 
-export default function Home() {
+import getAllPosts from "@/lib/getAllPosts";
+import Link from "next/link";
+
+export default async function Home() {
+  const posts = await getAllPosts()
+  // console.log(posts)
+
+  // const blogs =[{
+  //   "userId": 1,
+  //   "id": 1,
+  //   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  //   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  // },
+  // {
+  //   "userId": 1,
+  //   "id": 2,
+  //   "title": "qui est esse",
+  //   "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  // }]
+
   return (
-    <div className="mx-auto">
-      {/* <Navbar></Navbar> */}
-      <h1 className="text-7xl">Home</h1>
+    <div className="container mx-auto mt-10 px-4">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+      List of Blog Posts
+      </h1>
+
+      {!posts ? (
+        <p className="text-center text-gray-700">Loading...</p>
+      ) : (
+        <ul className="space-y-6">
+          {posts.map((post) => (
+            <li key={post.id} className="bg-base-200 shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
+              <Link
+                href={`/blog/${post.id}`}
+                className="block"
+              >
+                
+                <h2 className="text-xl font-semibold text-gray-800 hover:underline">
+                  {post.title}
+                </h2>
+
+                
+                <p className="text-gray-700 mt-2 line-clamp-2">
+                  {post.body}
+                </p>
+
+                
+                <div className="mt-4">
+                  <span className="text-sm font-medium text-gray-700 hover:text-gray-900">
+                    Read More →
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
+
+
+
+
+
+
+
+  //   <div className="container mx-auto mt-6">
+  //   <h1 className="text-4xl mb-4 text-gray-600 font-bold">List of Blog Posts</h1>
+  //   {!posts ? (
+  //     <p>Loading...</p>
+  //   ) : (
+  //     <ul>
+  //       {posts.map((post) => (
+  //         <li className="mb-5" key={post.id}>
+  //           <Link href={`/blog/${post.id}`} className="text-blue-900 hover:underline">
+  //             {post.title}
+  //           </Link>
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   )}
+  // </div>
   );
 }
 
