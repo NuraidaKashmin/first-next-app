@@ -1,10 +1,9 @@
-import Navbar from '@/components/Navbar';
-import React from 'react';
+// import Navbar from '@/components/Navbar';
 
 const profile = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            {/* <Navbar></Navbar> */}
             <h1>profile</h1>
         </div>
     );
