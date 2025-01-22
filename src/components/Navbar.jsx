@@ -1,22 +1,17 @@
+import Link from "next/link";
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-300">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="btn btn-ghost text-xl">First Next App</a>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Link</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="bg-base-100 rounded-t-none p-2">
-                                <li><a>Link 1</a></li>
-                                <li><a>Link 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
+                    <li><Link className="text-lg font-bold" href="/">Home</Link></li>
+                    <li><Link className="text-lg font-bold" href="/profile">Profile</Link></li>
+                    <li><Link className="text-lg font-bold" href="/">Login</Link></li>
+                    
                 </ul>
             </div>
         </div>
