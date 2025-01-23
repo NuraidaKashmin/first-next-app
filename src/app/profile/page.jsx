@@ -1,12 +1,14 @@
-// import Navbar from '@/components/Navbar';
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
+import {redirect} from "next/navigation";
 
-const profile = () => {
-    return (
-        <div>
-            {/* <Navbar></Navbar> */}
-            <h1>profile</h1>
-        </div>
-    );
-};
+export default async function Protected() {
+  const {isAuthenticated} = getKindeServerSession();
 
-export default profile;
+  if (!(await isAuthenticated())) {
+    redirect("/api/auth/login");
+  }
+
+  return <div>
+    <h1 className="text-8xl font-bold text-blue-900 mb-6 text-center mt-20">Welcome to your profile!</h1>
+  </div>;
+}
