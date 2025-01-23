@@ -6,7 +6,7 @@ const Navbar = async () => {
     const {getUser}= getKindeServerSession();
     const user = await getUser()
     return (
-        <div className="navbar bg-base-300">
+        <div className="navbar bg-base-300 ">
             <div className="flex-1">
                 <Link href="/" className="ml-4 text-3xl font-medium text-blue-950">First Next App</Link>
             </div>
@@ -22,10 +22,7 @@ const Navbar = async () => {
                         )
                     }
 
-
-
-
-                    
+             
                     
                 </ul>
             </div>
